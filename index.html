@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beginner Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header Styling */
+        #header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: white;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        #header1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        #left {
+            display: flex;
+            align-items: center;
+        }
+
+        #logo {
+            margin-left: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+        }
+
+        #groco {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: black;
+        }
+
+        #medile {
+            display: flex;
+            gap: 20px;
+            color:rgb(84, 81, 81);
+            margin-left:60px;
+        }
+
+        #medile h2 {
+            font-size: 1rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        #medile h2:hover {
+            color: orangered;
+        }
+
+        #last img {
+            margin-right:40px;
+            margin-left: 2px;
+
+            cursor: pointer;
+            width: 100%;
+            height: 35px;
+            object-fit: cover;
+        }
+
+        /* Main Page Styling */
+        #main_page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            background-color: #f4f4f4;
+            padding-top: 80px; /* To account for fixed header */
+        }
+
+        .banner-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            height: 450px;
+            overflow: hidden;
+        }
+
+        .banner-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: black;
+            text-align: center;
+             /* Optional: Dark overlay for better text visibility */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .overlay h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .overlay p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        #button {
+            background-color: transparent;
+            cursor: pointer;
+            border: 1px solid black;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 4px 2px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #button:hover {
+            background-color: orangered;
+            color:white;
+        }
+
+        /* Features Section Styling */
+        .features {
+            text-align: center;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction:row;
+            margin-left: 60px;
+            justify-content:center;
+            align-items:baseline;
+
+            
+            
+        }
+
+        .features span {
+            background-color: orangered;
+            color: white;
+            display: inline-block;
+            padding: 8px 20px;
+            clip-path: polygon(100% 0,93% 50%,100% 99%, 0% 100%, 7% 50%, 0% 0%);
+            margin-bottom: 20px;
+            display: block;
+            width: fit-content;
+            margin-left: 10px;
+            
+            
+            
+        }
+
+        #featurestype {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 30px;
+            background-color: #f4f4f4;
+            
+        }
+
+        .feature-item {
+            background-color: white;
+            width:30%;
+            height: 90%;
+            padding: 50px;
+            
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .feature-item img {
+            width: 160px;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .feature-item h1 {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+            color: black;
+        }
+
+        .feature-item p {
+            font-size: 1rem;
+            color: grey;
+            margin-bottom: 15px;
+            line-height: 25px;
+        }
+
+        .feature-item button {
+            background-color: white;
+            cursor: pointer;
+            border: 2px solid  black;
+            color: black;
+            padding: 10px 30px;
+            font-size: 18px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .feature-item button:hover {
+            background-color: orangered;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #featurestype {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-item {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+
+            .overlay h1 {
+                font-size: 2rem;
+            }
+
+            .overlay p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header id="header">
+        <div id="header1">
+            <div id="left">
+                <img id="logo" src="./logo.jpeg" alt="Logo">
+                <h1 id="groco">Groco</h1>
+            </div>
+            <div id="medile">
+                <h2 id="home">Home</h2>
+                <h2 id="feature">Features</h2>
+                <h2 id="product">Products</h2>
+                <h2 id="Categories">Categories</h2>
+                <h2 id="review">Review</h2>
+                <h2 id="blogs">Blogs</h2>
+            </div>
+            <div id="last">
+                <img id="search" src="./rightlogo.jpeg" alt="Search">
+                
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Page Section -->
+    <div id="main_page">
+        <div class="banner-container">
+            <img src="./banner-bg.webp"  alt="Banner Image">
+            <div class="overlay">
+                <h1>Fresh And <span style="color: orangered;">Organic </span>Products</h1>
+                <p style="color: grey;">Lorem Ipsum Dolor Sit, Amet Consectetur Adipisicing Elit. Numquam Vitae Perspiciatis Neque Soluta</p>
+                <button id="button">Shop Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <h1 class="features">Our <span>Features</span></h1>
+    <div id="featurestype">
+        <div class="feature-item">
+            <img src="./feature-img-1.png" alt="Fresh Organic">
+            <h1>Fresh And Organic</h1>
+            <p>Lorem Ipsum Dolor Sit Amet Consectetur
+            Adipisicing Elit Quis!</p>
+            
+            <button>Read More</button>
+        </div>
+        <div class="feature-item">
+            <img src="./feature-img-2.png" alt="Free Delivery">
+            <h1>Free Delivery</h1>
+            <p>Lorem Ipsum Dolor Sit Amet Consectetur
+            Adipisicing Elit Quis!</p>
+            <button>Read More</button>
+        </div>
+        <div class="feature-item">
+            <img src="./feature-img-3.png" alt="Easy Payment">
+            <h1>Easy Payment</h1>
+            <p>Lorem Ipsum Dolor Sit Amet Consectetur 
+            Adipisicing Elit Quis!</p>
+            <button>Read More</button>
+        </div>
+    </div>
+
+
+    <!-- Product Section -->
+    <section class="product-slider">
+        <div class="heading">
+          Our<span>Products</span>
+        </div>
+        <div class="product-container">
+            
+            <div class=" div box">
+                <div class="try-border">
+                    <img src="./image/product-1.png" alt="Fresh Cabbage">
+                    <h3 class="prod-head">Fresh Cabbage</h3>
+                    <p class="price">$4.99 -- $10.99/-</p>
+                    <div class="star">★★★★★</div>
+                    <a href="#" class="btn">Add To Cart</a>
+                </div>
+               
+            </div>
+
+            <div class=" div box">
+                <div class="try-border">
+                <img src="./image/product-2.png" alt="Fresh Orange">
+                <h3 class="prod-head">Fresh Orange</h3>
+                <p class="price">$4.99 -- $10.99/-</p>
+                <div class="star">★★★★★</div>
+                <a href="#" class="btn">Add To Cart</a>
+                </div>
+                
+            </div>
+
+            <div class=" div box">
+                <div class="try-border">
+                <img src="./image/product-3.png" alt="Fresh Onion">
+                <h3 class="prod-head">Fresh Onion</h3>
+                <p class="price">$4.99 -- $10.99/-</p>
+                <div class="star">★★★★★</div>
+                <a href="#" class="btn">Add To Cart</a>
+                </div>
+                
+            </div>
+
+            <div class=" div box">
+                <div class="try-border">
+                <img src="./image/product-4.png" alt="Green Lemon">
+                <h3 class="prod-head">Green Lemon</h3>
+                <p class="price">$4.99 -- $10.99/-</p>
+                <div class="star">★★★★★</div>
+                <a href="#" class="btn">Add To Cart</a>
+                </div>
+                
+            </div>
+
+            <div class=" div box">
+                <div class="try-border">
+                    <img src="./image/product-5.png" alt="Fresh Potato">
+                    <h3 class="prod-head">Fresh Potato</h3>
+                    <p class="price">$4.99 -- $10.99/-</p>
+                    <div class="star">★★★★★</div>
+                    <a href="#" class="btn">Add To Cart</a>
+                </div>
+                
+            </div>
+
+            <div class=" div box">
+                <div class="try-border">
+                    <img src="./image/product-6.png" alt="Fresh Avocado">
+                <h3 class="prod-head">Fresh Avocado</h3>
+                <p class="price">$4.99 -- $10.99/-</p>
+                <div class="star">★★★★★</div>
+                <a href="#" class="btn">Add To Cart</a>
+                </div>
+                
+            </div>
+        </div>
+        
+       
+    </section>
+
+
+    <!-- Category and review -->
+     <section>
+        <div class="container">
+            <div class="header">
+                <h1>Products <span class="highlight">Categories</span></h1>
+                <div class="orange-border"></div> <!-- New div for the orange border -->
+            </div>
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./vegetable.jpeg" alt="Vegetables">
+                        <h3>Vegetables</h3>
+                        <p>Upto 45% Off</p>
+                        <button>Shop Now</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./fruits.jpeg" alt="Fresh Fruits">
+                        <h3>Fresh Fruits</h3>
+                        <p>Upto 45% Off</p>
+                        <button>Shop Now</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./dairy.jpeg" style="height:135px;">
+                        <h3>Dairy Products</h3>
+                        <p>Upto 45% Off</p>
+                        <button>Shop Now</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./meat.jpeg" alt="Fresh Meat" style="height:135px;">
+                        <h3>Fresh Meat</h3>
+                        <p>Upto 45% Off</p>
+                        <button>Shop Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Customer's Review -->
+    
+        <div class="container">
+            <div class="header">
+                <h1>Customer's <span class="highlight">Review</span></h1>
+                <div class="orange-border"></div> <!-- New div for the orange border -->
+            </div>
+    
+            <div class="white-card-container">
+                <div class="white-card">
+                    <div class="white-card-content">
+                        <div class="image-container">
+                        <img src="./review1.jpeg" alt="Vegetables"></div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore alias quis sed unde
+                            voluptatum! Eos ratione qui facere expedita a. Quae libero optio repellendus provident ad nam
+                            dicta pariatur perspiciatis.</p>
+                        <h3>John Deo</h3>
+                        <div class="star-rating">
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star half">&#9733;</span>
+                          </div>
+                        
+                        
+                    </div>
+                </div>
+    
+                <div class="white-card">
+                    <div class="white-card-content">
+                        <div class="image-container">
+                        <img src="./review2.jpeg" alt="Vegetables"></div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore alias quis sed unde
+                            voluptatum! Eos ratione qui facere expedita a. Quae libero optio repellendus provident ad nam
+                            dicta pariatur perspiciatis.</p>
+                        <h3>John Deo</h3>
+                        <div class="star-rating">
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star half">&#9733;</span>
+                          </div>
+                        
+                        
+                    </div>
+                </div>
+    
+                <div class="white-card">
+                    <div class="white-card-content">
+                        <div class="image-container">
+                        <img src="./review3.jpeg" alt="Fresh Fruits"></div>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore alias quis sed unde
+                            voluptatum! Eos ratione qui facere expedita a. Quae libero optio repellendus provident ad nam
+                            dicta pariatur perspiciatis.</p>
+                        <h3>John Deo</h3>
+                        <div class="star-rating">
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star">&#9733;</span>
+                            <span class="star half">&#9733;</span>
+                          </div>
+                       
+                    
+                    </div>
+                </div>
+    
+               
+                </div>
+    
+            </div>
+        </div>
+        </div>
+    
+    
+    
+     </section>
+    
+     <!-- Blogs and Footer -->
+      <section>
+        <div class="blog-section">
+            <h2>Our <span>Blogs</span></h2>
+            
+            <div class="blog-cards">
+                <!-- Blog Card 1 -->
+                <div class="card">
+                    <img src="./blog1.jpeg" alt="Blog Image 1">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <span>By User</span>
+                            <span>1st May, 2021</span>
+                        </div>
+                        <h3>Fresh And Organic Vegetables And Fruits</h3>
+                        <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Veniam, Expedita.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+        
+                <!-- Blog Card 2 -->
+                <div class="card">
+                    <img src="./blog2.jpeg" alt="Blog Image 2">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <span>By User</span>
+                            <span>1st May, 2021</span>
+                        </div>
+                        <h3>Fresh And Organic Vegetables And Fruits</h3>
+                        <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Veniam, Expedita.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+        
+                <!-- Blog Card 3 -->
+                <div class="card">
+                    <img src="./blog3.jpeg" alt="Blog Image 3">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <span>By User</span>
+                            <span>1st May, 2021</span>
+                        </div>
+                        <h3>Fresh And Organic Vegetables And Fruits</h3>
+                        <p>Lorem Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Veniam, Expedita.</p>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+             
+        
+            <!-- Footer Section -->
+            <footer>
+                <div class="footer-container">
+                    <!-- First Column: Company Info -->
+                    <div class="footer-column">
+                        <h2>Groco <i class="fas fa-shopping-basket" style="color: #ff7c1f;"></i></h2>
+                        <p>Lorem, Ipsum Dolor Sit Amet Consectetur Adipisicing Elit. Natus, Laudantium?</p>
+                        <div class="footer-socials">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+        
+                    <!-- Second Column: Contact Info -->
+                    <div class="footer-column">
+                        <h3>Contact Info</h3>
+                        <p><i class="fas fa-phone-alt"></i> +123 456 7890</p>
+                        <p><i class="fas fa-phone-alt"></i> +111 222 3333</p>
+                        <p><i class="fas fa-envelope"></i> name@email.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Pernambuco, Brazil</p>
+                    </div>
+        
+                    <!-- Third Column: Quick Info -->
+                    <div class="footer-column">
+                        <h3>Quick Info</h3>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i> Home</a></li>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i> Features</a></li>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i> Products</a></li>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i> Categories</a></li>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i> Reviews</a></li>
+                            <li><a href="#"><i class="fas fa-arrow-right"></i> Blogs</a></li>
+                        </ul>
+                    </div>
+        
+                    <!-- Fourth Column: Newsletter -->
+                    <div class="footer-column">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe For Latest Updates</p>
+                        <form action="#">
+                            <input type="email" placeholder="your email">
+                            <button type="submit">Subscribe</button>
+                        </form>
+                        <br>
+                        <div class="payment-methods">
+                            <img src="./payment.jpeg" alt="Visa">
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        
+      </section>
+</body>
+</html>
